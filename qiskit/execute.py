@@ -231,6 +231,8 @@ def execute(experiments, backend,
 
             job = execute(qc, backend, shots=4321)
     """
+    if isinstance(shots, str):
+        raise QiskitError("shots should be entered as an integer, not a string")
     if isinstance(experiments, Schedule) or (isinstance(experiments, list) and
                                              isinstance(experiments[0], Schedule)):
         # do not transpile a schedule circuit
